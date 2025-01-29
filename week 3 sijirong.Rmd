@@ -1,0 +1,37 @@
+---
+title: "week3 demo sijirong"
+author: "siji rong"
+date: "2025-01-29"
+output: html_document
+---
+
+```{r}
+library(stringi)
+library(dplyr)
+library(tidytext)
+library(ggplot2)
+library(scales)
+```
+
+```{r}
+getwd()
+setwd("/Users/rongsiji/Documents/GitHub/week-3-demo")
+```
+
+```{r}
+barbie_post<-read.csv("Barbie_Reddit_Posts - Barbie_Reddit_Posts.csv")
+```
+
+```{r}
+barbie_recorded<-barbie_post%>%
+  mutate(movie="barbie")
+```
+
+```{r}
+oppenheimer_post<-read.csv("Oppenheimer_Reddit_Posts - Oppenheimer_Reddit_Posts.csv")
+```
+
+```{r}
+oppenheimer_recorded<-oppenheimer_post%>%
+  mutate(movie="oppenheimer")
+```
