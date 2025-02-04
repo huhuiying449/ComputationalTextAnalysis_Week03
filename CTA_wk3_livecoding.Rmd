@@ -14,6 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(quanteda)
 library(readtext)
+library(questionr)
 ```
 
 ## Data
@@ -25,22 +26,37 @@ You can also use the R menu at the top of your screen: Session / Set working dir
 
 ```{r}
 getwd()
+
+setwd("/Users/mlieutau/Documents/GitHub/ComputationalTextAnalysis_Week03")
 ```
 
 ## import the barbie and oppenheimer data from the Github repo
 use read.csv() command
 ```{r}
-
+barbie_posts <- read.csv("Barbie_Reddit_Posts - Barbie_Reddit_Posts.csv")
+oppenheimer_posts <- read.csv("Oppenheimer_Reddit_Posts - Oppenheimer_Reddit_Posts.csv")
 ```
 
 ## bind the different datasets
 ```{r}
 # create variable to identify the two datasets
+barbie_posts <- barbie_posts %>%
+  mutate(movie = "barbie")
+
+View(barbie_posts)
+
+oppenheimer_posts <- oppenheimer_posts %>%
+  mutate(movie = "oppenheimer")
+
+View(oppenheimer_posts)
 
 # bind rows to make a single dataset
+barbie_oppenheimer_posts <- rbind(barbie_posts, oppenheimer_posts)
+
+# check movie variable
+freq(barbie_oppenheimer_posts$movie)
 
 # add row number variable
-
 ```
 note: binding is a way of merging data (there are other ways)
 
